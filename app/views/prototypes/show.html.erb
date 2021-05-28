@@ -6,7 +6,7 @@
       </p>
       <%# プロトタイプの投稿者とログインしているユーザーが同じであれば以下を表示する %>
       <% if user_signed_in? && current_user.id == @prototype.user_id %>
-      <%= link_to "#{current_user.user_name}", prototype_user_path(@prototype), class: :prototype__user %>
+      <%= link_to "#{current_user.user_name}", prototype_path(@prototype.user.id ), class: :prototype__user %>
         <div class="prototype__manage">
           <%= link_to "編集する", edit_prototype_path(@prototype.id), class: :prototype__btn %>
           <%= link_to "削除する",  prototype_path(@prototype.id), class: :prototype__btn, method: :delete %>

@@ -7,6 +7,7 @@ class PrototypesController < ApplicationController
     # @prototype = Prototype.new
     # @prototypes = Prototype.all
     @prototypes = Prototype.includes(:user)
+  
   end
   def new
     @prototype = Prototype.new
@@ -60,7 +61,7 @@ class PrototypesController < ApplicationController
   end
 
   def set_tweet
-        @prototype = Prototype.find(params[:id])
+    @prototypes = Prototype.includes(:user)
       end
   def move_to_index
         unless user_signed_in?

@@ -1,13 +1,12 @@
 class PrototypesController < ApplicationController
-  before_action :set_tweet, only: [:edit, :show]
-  before_action :move_to_index, except: [:index, :show]
+  before_action :set_prototype, only: [:edit, :show]
+  
 
   def index
-
-    # @prototype = Prototype.new
-    # @prototypes = Prototype.all
-    @prototypes = Prototype.includes(:user)
   
+    @prototypes = Prototype.includes(:user)
+
+ 
   end
   def new
     @prototype = Prototype.new
@@ -40,8 +39,8 @@ class PrototypesController < ApplicationController
   end
 
   def update
-    prototype = Prototype.find(params[:id])
-    if prototype.update(prototype_params)
+    @prototype = Prototype.find(params[:id])
+    if @prototype.update(prototype_params)
        redirect_to prototype_path
     else
       render :edit
@@ -60,12 +59,8 @@ class PrototypesController < ApplicationController
     params.require(:prototype).permit(:title, :catch_copy, :concept, :image).merge(user_id: current_user.id)
   end
 
-  def set_tweet
+  def set_prototype
     @prototypes = Prototype.includes(:user)
       end
-  def move_to_index
-        unless user_signed_in?
-          redirect_to action: :index
-        end
-  end
+ 
 end

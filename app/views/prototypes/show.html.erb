@@ -5,7 +5,7 @@
         <%= @prototype.title %>
       </p>
       <%# プロトタイプの投稿者とログインしているユーザーが同じであれば以下を表示する %>
-      <%= link_to @prototype.user.user_name, user_path(@prototype), class: :prototype__user %>
+      <%= link_to @prototype.user.user_name, user_path(@prototype.user_id), class: :prototype__user %>
       <% if user_signed_in? && current_user.id == @prototype.user_id %>
         <div class="prototype__manage">
           <%= link_to "編集する", edit_prototype_path(@prototype.id), class: :prototype__btn %>
@@ -51,7 +51,7 @@
             <li class="comments_list">   
               <%= comment.text %>
             </li>
-              <%= link_to comment.user.user_name, user_path(@prototype), class: :comment_user %>
+              <%= link_to comment.user.user_name, user_path(comment), class: :comment_user %>
             <% end %>
          <%# // 投稿に紐づくコメントを一覧する処理を記述する %>
         </ul>

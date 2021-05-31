@@ -7,9 +7,11 @@ class UsersController < ApplicationController
 
 
     def show
-      @prototypes = Prototype.includes(:user)
+     
       user = User.find(params[:id])
-        
+      
+    @prototypes = user.prototypes
+
         @user_name = user.user_name
         @user_profile = user.user_profile
         @user_occupation = user.user_occupation

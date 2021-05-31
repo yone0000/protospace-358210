@@ -51,7 +51,7 @@
             <li class="comments_list">   
               <%= comment.text %>
             </li>
-              <%= link_to comment.user.user_name, user_path(comment), class: :comment_user %>
+              <%= link_to comment.user.user_name, user_path(current_user), class: :comment_user %>
             <% end %>
          <%# // 投稿に紐づくコメントを一覧する処理を記述する %>
         </ul>

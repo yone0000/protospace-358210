@@ -1,4 +1,4 @@
-    
+    <% if user_signed_in? && current_user.id == @prototype.user_id %>
 <div class="main">
   <div class="inner">
     <div class="form__wrapper">
@@ -8,3 +8,4 @@
     </div>
   </div>
 </div>
+<% end%>
